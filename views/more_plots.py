@@ -56,7 +56,7 @@ def show():
         )
         fig_gender.update_traces(textposition='inside', textinfo='percent+label+value')
         fig_gender.update_layout(showlegend=False, margin=dict(t=40, b=20))
-        st.plotly_chart(fig_gender, use_container_width=True)
+        st.plotly_chart(fig_gender, width="stretch")
 
     with col_right:
         # Age group distribution
@@ -71,7 +71,7 @@ def show():
         )
         fig_age.update_layout(showlegend=False, xaxis_title='Age Group', yaxis_title='Number of Customers')
         fig_age.update_traces(textposition='outside')
-        st.plotly_chart(fig_age, use_container_width=True)
+        st.plotly_chart(fig_age, width="stretch")
 
     st.divider()
 
@@ -94,7 +94,7 @@ def show():
         )
         fig_country.update_layout(showlegend=False, yaxis_title='', xaxis_title='Number of Customers')
         fig_country.update_traces(textposition='outside')
-        st.plotly_chart(fig_country, use_container_width=True)
+        st.plotly_chart(fig_country, width="stretch")
 
     with col_b:
         # Country + Seating Region breakdown
@@ -112,7 +112,7 @@ def show():
             xaxis_title='Country', yaxis_title='Number of Customers',
             legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
         )
-        st.plotly_chart(fig_cr, use_container_width=True)
+        st.plotly_chart(fig_cr, width="stretch")
 
     st.divider()
 
@@ -145,7 +145,7 @@ def show():
         yaxis_title='Avg Spend (USD)',
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
     )
-    st.plotly_chart(fig_spend, use_container_width=True)
+    st.plotly_chart(fig_spend, width="stretch")
 
     st.divider()
 
@@ -166,7 +166,7 @@ def show():
         )
         fig_tickets.update_layout(showlegend=False, xaxis_title='Number of Tickets', yaxis_title='Transactions')
         fig_tickets.update_traces(textposition='outside')
-        st.plotly_chart(fig_tickets, use_container_width=True)
+        st.plotly_chart(fig_tickets, width="stretch")
 
     with col_d:
         avg_tickets_by_region = df.groupby('Seating_Region')['Num_Tickets'].mean().reindex(
@@ -183,7 +183,7 @@ def show():
         )
         fig_avg_tick.update_layout(showlegend=False, xaxis_title='Seating Region', yaxis_title='Avg Tickets')
         fig_avg_tick.update_traces(textposition='outside')
-        st.plotly_chart(fig_avg_tick, use_container_width=True)
+        st.plotly_chart(fig_avg_tick, width="stretch")
 
     st.divider()
 
@@ -212,7 +212,7 @@ def show():
     )
     fig_repeat.update_layout(showlegend=False, xaxis_title=repeat_by.replace('_', ' '), yaxis_title='Repeat Rate (%)', yaxis_range=[0, 100])
     fig_repeat.update_traces(textposition='outside')
-    st.plotly_chart(fig_repeat, use_container_width=True)
+    st.plotly_chart(fig_repeat, width="stretch")
 
     st.divider()
 
@@ -236,4 +236,4 @@ def show():
         xaxis_title=box_segment.replace('_', ' '),
         yaxis_title='Total Spend (USD)'
     )
-    st.plotly_chart(fig_box, use_container_width=True)
+    st.plotly_chart(fig_box, width="stretch")

@@ -87,7 +87,7 @@ def show():
         hovermode='x unified',
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
     )
-    st.plotly_chart(fig_rev, use_container_width=True)
+    st.plotly_chart(fig_rev, width="stretch")
 
     st.divider()
 
@@ -117,7 +117,7 @@ def show():
         hovermode='x unified',
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
     )
-    st.plotly_chart(fig_area, use_container_width=True)
+    st.plotly_chart(fig_area, width="stretch")
 
     st.divider()
 
@@ -155,7 +155,7 @@ def show():
         hovermode='x unified',
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
     )
-    st.plotly_chart(fig_visitors, use_container_width=True)
+    st.plotly_chart(fig_visitors, width="stretch")
 
     st.divider()
 
@@ -181,7 +181,7 @@ def show():
         )
         fig_day_visits.update_layout(showlegend=False)
         fig_day_visits.update_traces(textposition='outside')
-        st.plotly_chart(fig_day_visits, use_container_width=True)
+        st.plotly_chart(fig_day_visits, width="stretch")
 
     with col_right:
         fig_day_rev = px.bar(
@@ -193,7 +193,7 @@ def show():
         )
         fig_day_rev.update_layout(showlegend=False, yaxis_title='Avg Revenue (USD)')
         fig_day_rev.update_traces(textposition='outside')
-        st.plotly_chart(fig_day_rev, use_container_width=True)
+        st.plotly_chart(fig_day_rev, width="stretch")
 
     st.divider()
 
@@ -220,7 +220,7 @@ def show():
         hovermode='x unified',
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
     )
-    st.plotly_chart(fig_region, use_container_width=True)
+    st.plotly_chart(fig_region, width="stretch")
 
     st.divider()
 
@@ -252,4 +252,4 @@ def show():
         hovermode='x unified',
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
     )
-    st.plotly_chart(fig_sat_trend, use_container_width=True)
+    st.plotly_chart(fig_sat_trend, width="stretch")

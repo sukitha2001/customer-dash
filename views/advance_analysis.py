@@ -77,7 +77,7 @@ def show():
     fig_country.update_layout(
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
     )
-    st.plotly_chart(fig_country, use_container_width=True)
+    st.plotly_chart(fig_country, width="stretch")
 
     st.divider()
 
@@ -107,7 +107,7 @@ def show():
             xaxis_title='Seating Region', yaxis_title='Revenue (USD)',
             legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
         )
-        st.plotly_chart(fig_region_stack, use_container_width=True)
+        st.plotly_chart(fig_region_stack, width="stretch")
 
     with col_right:
         fig_avg_spend = px.bar(
@@ -119,7 +119,7 @@ def show():
         )
         fig_avg_spend.update_layout(showlegend=False, yaxis_title='Avg Spend (USD)')
         fig_avg_spend.update_traces(textposition='outside')
-        st.plotly_chart(fig_avg_spend, use_container_width=True)
+        st.plotly_chart(fig_avg_spend, width="stretch")
 
     st.divider()
 
@@ -143,7 +143,7 @@ def show():
         )
         fig_age_rev.update_layout(showlegend=False, xaxis_title='Age Group', yaxis_title='Revenue (USD)')
         fig_age_rev.update_traces(textposition='outside')
-        st.plotly_chart(fig_age_rev, use_container_width=True)
+        st.plotly_chart(fig_age_rev, width="stretch")
 
     with col_d:
         fig_age_avg = px.bar(
@@ -155,7 +155,7 @@ def show():
         )
         fig_age_avg.update_layout(showlegend=False, xaxis_title='Age Group', yaxis_title='Avg Spend (USD)')
         fig_age_avg.update_traces(textposition='outside')
-        st.plotly_chart(fig_age_avg, use_container_width=True)
+        st.plotly_chart(fig_age_avg, width="stretch")
 
     st.divider()
 
@@ -177,7 +177,7 @@ def show():
             color_discrete_map={'Repeat': '#2ecc71', 'First-Time': '#e74c3c'}
         )
         fig_repeat_rev.update_traces(textposition='inside', textinfo='percent+label+value')
-        st.plotly_chart(fig_repeat_rev, use_container_width=True)
+        st.plotly_chart(fig_repeat_rev, width="stretch")
 
     with col_f:
         fig_repeat_avg = go.Figure()
@@ -191,7 +191,7 @@ def show():
             title='Avg Spend per Customer: Repeat vs First-Time',
             yaxis_title='Avg Spend (USD)'
         )
-        st.plotly_chart(fig_repeat_avg, use_container_width=True)
+        st.plotly_chart(fig_repeat_avg, width="stretch")
 
     st.divider()
 
@@ -215,4 +215,4 @@ def show():
         hovermode='x unified',
         legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5)
     )
-    st.plotly_chart(fig_timeline, use_container_width=True)
+    st.plotly_chart(fig_timeline, width="stretch")

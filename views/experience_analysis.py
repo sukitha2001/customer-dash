@@ -67,7 +67,7 @@ def show():
         )
         fig_sat.update_layout(showlegend=False, yaxis_range=[0, 10])
         fig_sat.update_traces(textposition='outside')
-        st.plotly_chart(fig_sat, use_container_width=True)
+        st.plotly_chart(fig_sat, width="stretch")
 
     with col_right:
         fig_rec = px.bar(
@@ -79,7 +79,7 @@ def show():
         )
         fig_rec.update_layout(showlegend=False, yaxis_range=[0, 10])
         fig_rec.update_traces(textposition='outside')
-        st.plotly_chart(fig_rec, use_container_width=True)
+        st.plotly_chart(fig_rec, width="stretch")
 
     st.divider()
 
@@ -107,7 +107,7 @@ def show():
         xaxis_title='Total Spend (USD)',
         yaxis_title=score_choice.replace('_', ' ')
     )
-    st.plotly_chart(fig_scatter, use_container_width=True)
+    st.plotly_chart(fig_scatter, width="stretch")
 
     st.divider()
 
@@ -147,7 +147,7 @@ def show():
             yaxis_range=[0, 10]
         )
         fig_repeat.update_traces(textposition='outside')
-        st.plotly_chart(fig_repeat, use_container_width=True)
+        st.plotly_chart(fig_repeat, width="stretch")
 
     with col_b:
         fig_spend_repeat = go.Figure()
@@ -163,7 +163,7 @@ def show():
             yaxis_title='USD'
         )
         fig_spend_repeat.update_traces(textposition='outside')
-        st.plotly_chart(fig_spend_repeat, use_container_width=True)
+        st.plotly_chart(fig_spend_repeat, width="stretch")
 
     st.divider()
 
@@ -181,7 +181,7 @@ def show():
             opacity=0.7
         )
         fig_hist_sat.update_layout(xaxis_title='Satisfaction Score', yaxis_title='Count')
-        st.plotly_chart(fig_hist_sat, use_container_width=True)
+        st.plotly_chart(fig_hist_sat, width="stretch")
 
     with col_d2:
         fig_hist_rec = px.histogram(
@@ -193,7 +193,7 @@ def show():
             opacity=0.7
         )
         fig_hist_rec.update_layout(xaxis_title='Recommendation Likelihood', yaxis_title='Count')
-        st.plotly_chart(fig_hist_rec, use_container_width=True)
+        st.plotly_chart(fig_hist_rec, width="stretch")
 
     st.divider()
 
@@ -218,4 +218,4 @@ def show():
         aspect='auto'
     )
     fig_heat.update_layout(xaxis_title='Seating Region', yaxis_title='Country')
-    st.plotly_chart(fig_heat, use_container_width=True)
+    st.plotly_chart(fig_heat, width="stretch")

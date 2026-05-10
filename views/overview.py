@@ -66,7 +66,7 @@ def show():
         )
         fig_donut.update_traces(textposition='inside', textinfo='percent+label')
         fig_donut.update_layout(showlegend=False, margin=dict(t=20, b=20))
-        st.plotly_chart(fig_donut, use_container_width=True)
+        st.plotly_chart(fig_donut, width="stretch")
 
     with col_right:
         st.subheader("🌍 Revenue by Country")
@@ -80,7 +80,7 @@ def show():
         )
         fig_country.update_layout(showlegend=False, margin=dict(t=20, b=20), yaxis_title='', xaxis_title='Revenue (USD)')
         fig_country.update_traces(textposition='outside')
-        st.plotly_chart(fig_country, use_container_width=True)
+        st.plotly_chart(fig_country, width="stretch")
 
     st.divider()
 
@@ -99,7 +99,7 @@ def show():
         )
         fig_region.update_layout(showlegend=False, xaxis_title='Seating Region', yaxis_title='Revenue (USD)')
         fig_region.update_traces(textposition='outside')
-        st.plotly_chart(fig_region, use_container_width=True)
+        st.plotly_chart(fig_region, width="stretch")
 
     with col_b:
         st.subheader("🔄 Repeat vs First-Time Visitors")
@@ -112,7 +112,7 @@ def show():
         )
         fig_repeat.update_traces(textposition='inside', textinfo='percent+label+value')
         fig_repeat.update_layout(showlegend=False, margin=dict(t=20, b=20))
-        st.plotly_chart(fig_repeat, use_container_width=True)
+        st.plotly_chart(fig_repeat, width="stretch")
 
     st.divider()
 
@@ -126,4 +126,4 @@ def show():
         table_data = table_data[mask]
 
     st.caption(f"Showing **{len(table_data):,}** of {len(df):,} records")
-    st.dataframe(table_data, use_container_width=True, hide_index=True)
+    st.dataframe(table_data, width="stretch", hide_index=True)
