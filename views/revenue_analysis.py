@@ -105,6 +105,8 @@ def show():
             legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5, title_text='')
         )
         st.plotly_chart(fig_country, width="stretch")
+        
+    
 
     
 
@@ -135,6 +137,8 @@ def show():
             legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5, title_text='')
         )
         st.plotly_chart(fig_region_stack, width="stretch")
+        
+    
 
     with col_right:
         fig_avg_spend = px.bar(
@@ -147,3 +151,4 @@ def show():
         fig_avg_spend.update_layout(showlegend=False, yaxis_title='Avg Spend (USD)')
         fig_avg_spend.update_traces(textposition='outside')
         st.plotly_chart(fig_avg_spend, width="stretch")
+        

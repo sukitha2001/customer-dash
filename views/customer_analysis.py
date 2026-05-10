@@ -69,6 +69,8 @@ def show():
         fig_gender.update_traces(textposition='inside', textinfo='percent+label+value')
         fig_gender.update_layout(showlegend=False, margin=dict(t=40, b=20))
         st.plotly_chart(fig_gender, width="stretch")
+        
+       
 
     with col_right:
         # Age group distribution
@@ -84,6 +86,8 @@ def show():
         fig_age.update_layout(showlegend=False, xaxis_title='Age Group', yaxis_title='Number of Customers')
         fig_age.update_traces(textposition='outside')
         st.plotly_chart(fig_age, width="stretch")
+        
+       
 
     st.divider()
 

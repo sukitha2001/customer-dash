@@ -3,6 +3,9 @@ from streamlit_option_menu import option_menu
 
 from views import overview, revenue_analysis, customer_analysis, time_analysis
 
+if "advanced_mode" not in st.session_state:
+    st.session_state.advanced_mode = False
+
 st.set_page_config(page_title="Venue Analytics Dashboard", layout="wide")
 
 # ── Inject custom CSS based on index.css design tokens ──
@@ -107,50 +110,101 @@ st.markdown("""
     .main .block-container {
         padding-top: 2rem;
     }
+
+    /* ── Main container subtle background ── */
+    .main .block-container {
+        padding-top: 2rem;
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# ── Navigation (themed to match index.css primary/accent) ──
-selected = option_menu(
-    menu_title=None,
-    options=["Overview", "Revenue","Customer Analysis",  "Time Analysis"],
-    icons=["house", "currency-dollar", "people", "calendar3"],
-    menu_icon="cast",
-    default_index=0,
-    orientation="horizontal",
-    styles={
-        "container": {
-            "padding": "0!important",
-            "background-color": "#000000",
-            "border-radius": "0px",
-            "border": "2px solid #000",
-            "box-shadow": "4px 4px 0px 0px rgba(0,0,0,1)",
-            "margin-bottom": "1.5rem",
-        },
-        "icon": {
-            "color": "#FFD166",
-            "font-size": "18px",
-        },
-        "nav-link": {
-            "font-size": "14px",
-            "text-align": "center",
-            "margin": "0px",
-            "padding": "12px 16px",
-            "color": "#FFFFFF",
-            "font-family": "'DM Sans', sans-serif",
-            "font-weight": "600",
-            "text-transform": "uppercase",
-            "letter-spacing": "0.05em",
-            "border-radius": "0px",
-            "--hover-color": "#E63A46",
-        },
-        "nav-link-selected": {
-            "background-color": "#118AB2",
-            "border-radius": "0px",
-            "font-weight": "700",
-        },
-    }
-)
+# ── Navigation & Advanced Toggle ──
+col_nav, col_btn = st.columns([5, 1])
+
+with col_nav:
+    selected = option_menu(
+        menu_title=None,
+        options=["Overview", "Revenue","Customer Analysis",  "Time Analysis"],
+        icons=["house", "currency-dollar", "people", "calendar3"],
+        menu_icon="cast",
+        default_index=0,
+        orientation="horizontal",
+        styles={
+            "container": {
+                "padding": "0!important",
+                "background-color": "#000000",
+                "border-radius": "0px",
+                "border": "2px solid #000",
+                "box-shadow": "4px 4px 0px 0px rgba(0,0,0,1)",
+                "margin-bottom": "0rem",
+            },
+            "icon": {
+                "color": "#FFD166",
+                "font-size": "18px",
+            },
+            "nav-link": {
+                "font-size": "14px",
+                "text-align": "center",
+                "margin": "0px",
+                "padding": "12px 16px",
+                "color": "#FFFFFF",
+                "font-family": "'DM Sans', sans-serif",
+                "font-weight": "600",
+                "text-transform": "uppercase",
+                "letter-spacing": "0.05em",
+                "border-radius": "0px",
+                "--hover-color": "#E63A46",
+            },
+            "nav-link-selected": {
+                "background-color": "#118AB2",
+                "border-radius": "0px",
+                "font-weight": "700",
+            },
+        }
+    )
+
+with col_btn:
+    mode_selection = option_menu(
+        menu_title=None,
+        options=["Standard", "Advanced"],
+        icons=["eye", "calculator"],
+        menu_icon="cast",
+        default_index=1 if st.session_state.advanced_mode else 0,
+        orientation="horizontal",
+        styles={
+            "container": {
+                "padding": "0!important",
+                "background-color": "#000000",
+                "border-radius": "0px",
+                "border": "2px solid #000",
+                "box-shadow": "4px 4px 0px 0px rgba(0,0,0,1)",
+                "height": "48px",
+            },
+            "icon": {
+                "color": "#FFD166",
+                "font-size": "14px",
+            },
+            "nav-link": {
+                "font-size": "12px",
+                "text-align": "center",
+                "margin": "0px",
+                "padding": "10px 8px",
+                "color": "#FFFFFF",
+                "font-family": "'DM Sans', sans-serif",
+                "font-weight": "600",
+                "text-transform": "uppercase",
+                "border-radius": "0px",
+            },
+            "nav-link-selected": {
+                "background-color": "#118AB2",
+                "border-radius": "0px",
+            },
+        }
+    )
+    
+    # Update session state based on selection
+    st.session_state.advanced_mode = (mode_selection == "Advanced")
+
 
 if selected == "Overview":
     overview.show()

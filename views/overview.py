@@ -76,6 +76,15 @@ def show():
         fig_donut.update_traces(textposition='inside', textinfo='percent+label')
         fig_donut.update_layout(showlegend=False, margin=dict(t=20, b=20))
         st.plotly_chart(fig_donut, width="stretch")
+        
+        if st.session_state.get('advanced_mode'):
+            dominant_cat = rev_data.loc[rev_data['Amount'].idxmax(), 'Category']
+            cat_pct = (rev_data['Amount'].max() / rev_data['Amount'].sum()) * 100
+            st.markdown(f"""
+            <div style='background-color: #f0f2f6; padding: 10px; border-left: 5px solid #118AB2;'>
+                {dominant_cat} accounts for <strong>{cat_pct:.1f}%</strong> of total revenue.
+            </div>
+            """, unsafe_allow_html=True)
 
     with col_right:
         st.markdown("### <i class='bi bi-globe'></i> Revenue by Country", unsafe_allow_html=True)
@@ -90,6 +99,17 @@ def show():
         fig_country.update_layout(showlegend=False, margin=dict(t=20, b=20), yaxis_title='', xaxis_title='Revenue (USD)')
         fig_country.update_traces(textposition='outside')
         st.plotly_chart(fig_country, width="stretch")
+        
+        if st.session_state.get('advanced_mode'):
+            top_country = country_rev.iloc[-1]
+            bottom_country = country_rev.iloc[0]
+            multiplier = top_country['Total_Revenue'] / bottom_country['Total_Revenue']
+            st.markdown(f"""
+            <div style='background-color: #f0f2f6; padding: 10px; border-left: 5px solid #118AB2;'>
+                Top country ({top_country['Country']}) generates 
+                <strong>{multiplier:.1f}x</strong> more revenue than the lowest tracked market ({bottom_country['Country']}).
+            </div>
+            """, unsafe_allow_html=True)
 
     st.divider()
 

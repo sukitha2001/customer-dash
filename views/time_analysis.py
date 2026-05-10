@@ -90,7 +90,8 @@ def show():
             legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5, title_text='')
         )
         st.plotly_chart(fig_rev, width="stretch")
-
+        
+        
     with col_b:
         st.markdown("### <i class='bi bi-people'></i> Monthly Visitor Composition", unsafe_allow_html=True)
 
@@ -124,9 +125,7 @@ def show():
             legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='center', x=0.5, title_text='')
         )
         st.plotly_chart(fig_visitors, width="stretch")
-        st.caption(f"Average Monthly Repeat Rate: {monthly['Repeat_Rate'].mean():.1f}%")
         
-
     st.divider()
 
     st.markdown("### <i class='bi bi-ticket-perforated'></i> Monthly Revenue by Seating Region", unsafe_allow_html=True)
