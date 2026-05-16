@@ -1,6 +1,7 @@
-matplotlib
 plotly
 numpy
 pandas
 streamlit
 streamlit-option-menu
+streamlit-shadcn-ui
+pygwalker
